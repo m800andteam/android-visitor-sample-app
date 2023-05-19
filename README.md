@@ -18,36 +18,70 @@ Before you begin, ensure that you have the following:
 4. Click Finish to create the project.
  
 ## **Step 2: Add Libraries and Dependencies**
-1. Copy the "maaiiconnectmobileclient.aar" file to the libs directory in your Android project. If the libs directory doesn't exist, create it in the app module.
+1. Copy the "CinnoxVisitorSDK.aar" file to the libs directory in your Android project. If the libs directory doesn't exist, create it in the app module.
 
 2. Open your project's build.gradle file (usually found in the root directory).
 
 3. Add the following code snippet inside the dependencies block :  
+   
+```kotlin
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+}
+```
 
 4. Sync your project with the Gradle files by clicking on the "Sync Now" button or selecting File > Sync Project with Gradle Files.
+
 ## **Step 3: Update the MainActivity**
-1. Open the MainActivity.kt file (usually found in the app/src/main/java/com/example/yourproject/ directory).
+1. Open the MainActivity.kt file .
 
-2. Replace the contents of the MainActivity class with the provided code snippet.
+2. Add the serviceId of the MainActivity class with the provided code snippet.
+```kotlin
+const val serviceId = "xxxx.cinnox.com"
+```
+3. Init CinnoxVisitorCore  
+```kotlin
+val core = CinnoxVisitorCore.initialize(this, serviceId)
+```
 
-3. Make sure to import any necessary classes or packages related to the "maaiiconnectmobileclient.aar" library. You can refer to the library's documentation for the required imports.
+4. Add CinnoxVisitorCoreListener and register it when you need to know initialize end.
+```kotlin
+ private val mCoreListener: CinnoxVisitorCoreListener = object : CinnoxVisitorCoreListener{
+        override fun onInitializationEnd(success: Boolean, throwable: Throwable?) {
+            Log.d(TAG, "onInitializationEnd, isSuccess: $success, throwable: $throwable")
+        }
+    }
+ core.registerListener(mCoreListener)
+```
 
-4. Customize the onInitializationEnd method to handle the initialization results as desired.
+## **Step 3: Add CinnoxVisitorWidget in the activity_main.xml**
+
+```kotlin
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.m800.maaiiconnect.mobile.client.CinnoxVisitorWidget
+        android:id="@+id/floating_button"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
 
 
-## **Step 4: Build and Run**
-1. Connect an Android device to your development machine or use an emulator.
+## **Conclusion**
 
-2. Click on the "Run" button or select Run > Run 'app' from the menu.
+Congratulations! You have successfully added and configured the "CinnoxVisitorSDK.aar" library in your Android project. Make sure to refer to the library's documentation for any additional setup or usage instructions.
 
-3. Choose the target device or emulator on which to run the application.
-
-4. Click OK to install and launch the application.
-
-
-Congratulations! You have successfully added and configured the "maaiiconnectmobileclient.aar" library in your Android project. Make sure to refer to the library's documentation for any additional setup or usage instructions.
-
-Note: In some cases, you might need to add additional dependencies or configurations specific to the "maaiiconnectmobileclient.aar" library. Please refer to the library's documentation for any specific requirements.
+Note: In some cases, you might need to add additional dependencies or configurations specific to the "CinnoxVisitorSDK.aar" library. Please refer to the library's documentation for any specific requirements.
 
 Remember to refer to the official documentation of any external libraries or services used for further information and instructions.
 
