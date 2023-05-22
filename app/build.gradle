@@ -60,13 +60,32 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     def lifecycle_version = "2.5.1"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version" // For Kotlin use kapt instead of annotationProcessor
     kapt "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    implementation ("com.m800.sdk:call:3.12.0.605")
-    implementation ("com.m800.liveconnect.mobile.sdk:uikit:3.12.0.3852")
-    implementation ("com.m800.sdk:message:3.12.0.326")
-    implementation ("com.m800.sdk:push:3.12.0.51_visitor_sample_app")
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation  "com.appmattus.certificatetransparency:certificatetransparency-android:1.1.1"
+    implementation "com.google.protobuf:protobuf-java:3.19.1"
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation "io.noties.markwon:ext-strikethrough:4.6.1"
+    implementation "io.noties.markwon:ext-tables:4.6.1"
+    implementation "io.noties.markwon:linkify:4.6.1"
+    implementation "io.noties.markwon:image-glide:4.6.1"
+    implementation "io.noties.markwon:html:4.6.1"
+    implementation "io.noties.markwon:core:4.6.1"
+    implementation 'jp.wasabeef:richeditor-android:2.0.0'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.10.21'
+    implementation 'com.squareup.okhttp3:okhttp:4.4.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    def room_version = "2.4.0-alpha03"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation 'com.caverock:androidsvg:1.2.1'
 }
