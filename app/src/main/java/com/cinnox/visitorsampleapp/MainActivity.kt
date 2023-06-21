@@ -8,7 +8,7 @@ import com.m800.maaiiconnect.mobile.client.CinnoxVisitorCoreListener
 
 class MainActivity : AppCompatActivity() {
     companion object{
-        const val serviceId = "210b.cx-tb.cinnox.com"
+        const val serviceId = "xxxx.cinnox.com"
         const val TAG = "MainActivity"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
